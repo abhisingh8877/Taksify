@@ -3,7 +3,7 @@ import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import {Todo} from "../Component/model"
 import { MdDone } from "react-icons/md";
 import './styles.css'
-import TodoList from './TodoList';
+
 type Props={
     todo:Todo;
     todos:Todo[];
@@ -20,7 +20,7 @@ const SingleTodo:React.FC<Props>=({todo,todos,setTodos}:Props)=>{
     const handleDelete=(id:number)=>{
         setTodos(todos.filter((todo)=>todo.id!==id));
     };
-    const handleEdit=(id:number)=>{
+    const handleEdit=()=>{
         if(!edit && !todo.isDone)
         {
             setEdit(!edit);
@@ -47,7 +47,7 @@ const SingleTodo:React.FC<Props>=({todo,todos,setTodos}:Props)=>{
         
         
         <div>
-            <span className="icon" onClick={()=>handleEdit(todo.id)}><AiFillEdit/></span>
+            <span className="icon" onClick={handleEdit}><AiFillEdit/></span>
             <span className="icon" onClick={()=>handleDelete(todo.id)}><AiFillDelete/></span>
             <span className="icon" onClick={()=>handleDone(todo.id)}><MdDone/></span>
         </div>
